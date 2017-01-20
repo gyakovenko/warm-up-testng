@@ -44,6 +44,14 @@ public class AppBasics {
 		return scanner.nextLine();
 	}
 
+	public static void printIntArray(int[] anArray) {
+		System.out.print(anArray[0]);
+		for (int i = 1; i < anArray.length; i++) {
+			System.out.print(Integer.toString(anArray[i]));
+			System.out.print(", ");
+		}
+	}
+
 	public static int requestIntFromUser(String question) {
 		return requestIntFromUser(question, 0, 0);
 	}
@@ -111,5 +119,10 @@ public class AppBasics {
 			}
 		}
 		return arrayInAString;
+		/*
+		 * IF i wanted to user foreach.. I don't because my [0] is diff from all
+		 * else for (int i : anArray) { arrayInAString += ", "; arrayInAString
+		 * += Integer.toString(anArray[i]); }
+		 */
 	}
 }
