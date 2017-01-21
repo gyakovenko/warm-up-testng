@@ -44,6 +44,28 @@ public class AppBasics {
 		return scanner.nextLine();
 	}
 
+	public static void printAscendingCountByFor(int minInclusive, int maxInclusive, int numToDeIncrementBy) {
+		for (int i = minInclusive; i <= maxInclusive; i += numToDeIncrementBy) {
+			if (i == minInclusive) {
+				System.out.print(i);
+			} else {
+				System.out.print(", " + i);
+			}
+		}
+		System.out.print("\n");
+	}
+
+	public static void printDescendingCountByFor(int maxInclusive, int minInclusive, int numToDeIncrementBy) {
+		for (int i = maxInclusive; i >= minInclusive; i -= numToDeIncrementBy) {
+			if (i == maxInclusive) {
+				System.out.print(i);
+			} else {
+				System.out.print(", " + i);
+			}
+		}
+		System.out.print("\n");
+	}
+
 	public static void printIntArray(int[] anArray) {
 		System.out.print(anArray[0]);
 		for (int i = 1; i < anArray.length; i++) {
