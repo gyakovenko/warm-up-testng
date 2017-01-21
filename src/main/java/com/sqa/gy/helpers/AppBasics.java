@@ -44,23 +44,36 @@ public class AppBasics {
 		return scanner.nextLine();
 	}
 
-	public static void printAscendingCountByFor(int minInclusive, int maxInclusive, int numToDeIncrementBy) {
+	public static void printAddingingEachLoopFor(int minInclusive, int maxInclusive, int numToDeIncrementBy,
+			String symbolBefore, String symbolAfter, String symbolBetween) {
 		for (int i = minInclusive; i <= maxInclusive; i += numToDeIncrementBy) {
 			if (i == minInclusive) {
-				System.out.print(i);
+				System.out.print(symbolBefore + i + symbolAfter);
 			} else {
-				System.out.print(", " + i);
+				System.out.print(symbolBetween + symbolBefore + i + symbolAfter);
 			}
 		}
 		System.out.print("\n");
 	}
 
-	public static void printDescendingCountByFor(int maxInclusive, int minInclusive, int numToDeIncrementBy) {
-		for (int i = maxInclusive; i >= minInclusive; i -= numToDeIncrementBy) {
-			if (i == maxInclusive) {
-				System.out.print(i);
-			} else {
-				System.out.print(", " + i);
+	public static void printDividingEachLoopFor(int maxInclusive, int minInclusive, int numMultDivBy,
+			String symbolBefore, String symbolAfter, String symbolBetween) {
+
+		if (minInclusive < 0) {
+			for (int i = minInclusive; i <= maxInclusive; i = i / numMultDivBy) {
+				if (i == minInclusive) {
+					System.out.print(symbolBefore + i + symbolAfter);
+				} else {
+					System.out.print(symbolBetween + symbolBefore + i + symbolAfter);
+				}
+			}
+		} else {
+			for (int i = maxInclusive; i >= minInclusive; i = i / numMultDivBy) {
+				if (i == maxInclusive) {
+					System.out.print(symbolBefore + i + symbolAfter);
+				} else {
+					System.out.print(symbolBetween + symbolBefore + i + symbolAfter);
+				}
 			}
 		}
 		System.out.print("\n");
@@ -72,6 +85,30 @@ public class AppBasics {
 			System.out.print(Integer.toString(anArray[i]));
 			System.out.print(", ");
 		}
+	}
+
+	public static void printMultiplyingEachLoopFor(int minInclusive, int maxInclusive, int numMultDivBy,
+			String symbolBefore, String symbolAfter, String symbolBetween) {
+		for (int i = minInclusive; i <= maxInclusive; i = i * numMultDivBy) {
+			if (i == minInclusive) {
+				System.out.print(symbolBefore + i + symbolAfter);
+			} else {
+				System.out.print(symbolBetween + symbolBefore + i + symbolAfter);
+			}
+		}
+		System.out.print("\n");
+	}
+
+	public static void printSubtractingEachLoopFor(int maxInclusive, int minInclusive, int numToDeIncrementBy,
+			String symbolBefore, String symbolAfter, String symbolBetween) {
+		for (int i = maxInclusive; i >= minInclusive; i -= numToDeIncrementBy) {
+			if (i == maxInclusive) {
+				System.out.print(symbolBefore + i + symbolAfter);
+			} else {
+				System.out.print(symbolBetween + symbolBefore + i + symbolAfter);
+			}
+		}
+		System.out.print("\n");
 	}
 
 	public static int requestIntFromUser(String question) {
@@ -99,6 +136,7 @@ public class AppBasics {
 			} catch (NumberNotInRangeException e) {
 				System.out.println("You have not entered a number within the range of " + min + " and " + max + ".");
 			}
+			isNotValid = false;
 		}
 		return result;
 	}
