@@ -1,5 +1,4 @@
 /**
- *   File Name: AppBasics.java<br>
  *   Yakovenko, Galina<br>
  *   Created: Jan 16, 2017
  *
@@ -27,6 +26,29 @@ public class AppBasics {
 			total += anArray[i];
 		}
 		return total;
+	}
+
+	public static int convertStringtoInt(String input, int min, int max) {
+		int result = 0;
+		boolean isNotValid = true;
+		while (isNotValid) {
+			try {
+				result = Integer.parseInt(input);
+				if (min != 0 && max != 0) {
+					if (result < max && result > min) {
+						isNotValid = false;
+					} else {
+						throw new NumberNotInRangeException();
+					}
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("You have not entered a correct number value.");
+			} catch (NumberNotInRangeException e) {
+				System.out.println("You have not entered a number within the range of " + min + " and " + max + ".");
+			}
+			isNotValid = false;
+		}
+		return result;
 	}
 
 	public static void doSomething(String appName, String appActionIng) {
@@ -116,17 +138,41 @@ public class AppBasics {
 		System.out.print("\n");
 	}
 
-	public static String requestUserInfo(String prompt) {
-		System.out.print(prompt + " ");
-		String response = scanner.nextLine();
-		return response;
+	public static double requestDoubleFromUser(String question) {
+		return requestDoubleFromUser(question, 0, 0);
 	}
 
-	public static int requestUserInt(String question) {
-		return requestUserInt(question, 0, 0);
+	public static double requestDoubleFromUser(String question, double min, int max) {
+		String input;
+		double result = 0;
+		boolean isNotValid = true;
+		while (isNotValid) {
+			try {
+				System.out.print(question + " ");
+				input = scanner.nextLine();
+				result = Double.parseDouble(input);
+				if (min != 0 && max != 0) {
+					if (result < max && result > min) {
+						isNotValid = false;
+					} else {
+						throw new NumberNotInRangeException();
+					}
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("You have not entered a correct number value.");
+			} catch (NumberNotInRangeException e) {
+				System.out.println("You have not entered a number within the range of " + min + " and " + max + ".");
+			}
+			isNotValid = false;
+		}
+		return result;
 	}
 
-	public static int requestUserInt(String question, int min, int max) {
+	public static int requestIntFromUser(String question) {
+		return requestIntFromUser(question, 0, 0);
+	}
+
+	public static int requestIntFromUser(String question, int min, int max) {
 		String input;
 		int result = 0;
 		boolean isNotValid = true;
@@ -150,6 +196,42 @@ public class AppBasics {
 			isNotValid = false;
 		}
 		return result;
+	}
+
+	public static int requestIntFromUserexptCASHOUTorEXIT(String question, int min, int max) {
+		String input;
+		int result = 0;
+		boolean isNotValid = true;
+		while (isNotValid) {
+			try {
+				System.out.print(question + " ");
+				input = scanner.nextLine();
+				if (input.equalsIgnoreCase("Cash Out") || input.equalsIgnoreCase("Exit")) {
+					return -1;
+				} else {
+					result = Integer.parseInt(input);
+					if (min != 0 && max != 0) {
+						if (result <= max && result >= min) {
+							isNotValid = false;
+						} else {
+							throw new NumberNotInRangeException();
+						}
+					}
+				}
+				isNotValid = false;
+			} catch (NumberFormatException e) {
+				System.out.println("You have not entered a correct number value.");
+			} catch (NumberNotInRangeException e) {
+				System.out.println("You have not entered a number within the range of " + min + " and " + max + ".");
+			}
+		}
+		return result;
+	}
+
+	public static String requestUserInfo(String prompt) {
+		System.out.print(prompt + " ");
+		String response = scanner.nextLine();
+		return response;
 	}
 
 	public static boolean requestYesorNo(String prompt) {
